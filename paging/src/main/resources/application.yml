@@ -1,0 +1,55 @@
+# yml 문법(properties보다 가독성이 좋고 편리한 기능을 제공)
+# 1. key: value로 이루어짐.
+# 2. hiarachy를 표현할 때는 들여쓰기로 표현(2칸)
+# 3. application.yml과 application.properties는 같이 사용할 수 없음
+#     -> 만약에 2개의 파일이 동시에 있다면 우선순위는 application.properties가 높음
+server:
+  port: 9000  # server.port=9000
+  servlet:
+    encoding:
+      force: true # server.servlet.encoding.force=true
+
+
+
+
+spring:
+  sql:
+    init:
+      mode: always
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/paging
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#  h2:
+#    console:
+#      enabled: true
+
+#  datasource:
+#    driver-class-name: oracle.jdbc.OracleDriver
+#    url: jdbc:oracle:thin:@localhost:1521:orcl
+#    username: boarduser1
+#    password: 1234
+
+
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
