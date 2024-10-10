@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondproject.mybatis.WishMapper2">
+    <insert id="saveWish" parameterType="com.example.secondproject.wishlist.WishListDto">
+        INSERT INTO Wish (title, category, jibun_address, road_address, homepage_link, image_link, visit_is, visit_count, last_visit_date)
+        VALUES (#{title}, #{category}, #{jibunAddress}, #{roadAddress}, #{homepageLink}, #{imageLink}, false, 0, Null)
+    </insert>
+
+    <select id="getWishList" resultType="com.example.secondproject.mapper.WishMapperDto">
+        SELECT
+        id,
+        title,
+        category,
+        jibun_address AS jibunAddress,
+        road_address AS roadAddress,
+        homepage_link AS homepageLink,
+        image_link AS imageLink,
+        visit_is AS visitIs,
+        visit_count AS visitCount,
+        last_visit_date AS lastVisitDate
+        from wish
+    </select>
+
+    <select id="getWish" parameterType="Integer" resultType="com.example.secondproject.mapper.WishMapperDto">
+        SELECT * FROM wish WHERE id = #{wishId}
+    </select>
+
+    <update id="updateVisitWish" parameterType="Integer">
+        UPDATE wish
+        SET visit_is = 1, visit_count = visit_count + 1, last_visit_date = NOW()
+        WHERE id = #{wishId}
+    </update>
+
+    <delete id="deleteWish" parameterType="Integer">
+        DELETE FROM wish WHERE id = #{wishId}
+    </delete>
+</mapper>

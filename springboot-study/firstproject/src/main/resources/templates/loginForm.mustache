@@ -1,0 +1,42 @@
+{{>layouts/header}}
+
+{{#message}}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+{{/message}}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">로그인</h3>
+                    <form action="/login" method="post">
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Login ID</label>
+                            <input type="text" class="form-control" id="loginId" name="username" placeholder="Enter your login id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">로그인</button>
+                    </form>
+                    <br>
+                    <!-- 구글 로그인 -->
+                    <center><a href="/oauth2/authorization/google"><img src="/images/web_light_rd_SI@1x.png"/></a></center>
+
+                    <!-- 네이버 로그인 -->
+                    <center><a href="/oauth2/authorization/naver"><img src="/images/btnW_완성형.png" style="width:170px; height:40px; border:1px solid black; margin-top: 10px; border-radius:10px;"/></a></center>
+
+                    <!-- 카카오 로그인 -->
+                    <center><a href="/oauth2/authorization/kakao"><img src="/images/kakao_login_medium_narrow.png" style="width:170px; height:40px; border:1px solid black; margin-top: 10px; border-radius:10px;" /></a></center>
+                    <br><br>
+                    <a href="/joinForm">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>layouts/footer}}

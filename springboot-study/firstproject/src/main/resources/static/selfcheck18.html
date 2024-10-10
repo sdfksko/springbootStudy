@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>셀프체크 18</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <h1>모달로 데이터 전달</h1>
+    <!-- 모달 트리거 버튼 -->
+    <button id="trigger-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            data-custom-title="점심 뭐 먹지?"
+            data-custom-text="돈가스 어때?">트리거 버튼</button>
+    <!-- 모달 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-title">???</h1>
+                    <button type="button" class="btn-close"
+                            data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-text">...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // modal 요소를 선택
+    const exampleModal = document.querySelector("#exampleModal");
+
+    // modal이 열릴 때 기존의 값을 세팅하는 이벤트
+    exampleModal.addEventListener("show.bs.modal", function(event) {
+           // 1. 트리거 버튼 선택
+           const triggerBtn = event.relatedTarget; // Button trigger modal
+
+           // 2. 화면에 보이는 댓글의 각각 데이터가 가져오기
+           const title = triggerBtn.getAttribute("data-custom-title");
+           const text = triggerBtn.getAttribute("data-custom-text");
+
+           const modalTitle = document.querySelector("#modal-title");
+           const modalText = document.querySelector("#modal-text");
+
+           modalTitle.innerText = title;
+           modalText.innerText = text;
+    });
+    </script>
+</body>
+</html>

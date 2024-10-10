@@ -1,0 +1,30 @@
+server:
+  port: 9991
+  servlet:
+    encoding:
+      force: true
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  datasource:
+    # mysql driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # jdbc:db종류://host주소:포트/DB이름?옵션들
+    url: jdbc:mysql://localhost:3306/search_region?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul
+    username: root
+    password: 1234
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            BasicBinder: TRACE

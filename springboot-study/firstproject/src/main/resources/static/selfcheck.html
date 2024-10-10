@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>셀프체크 17</title>
+</head>
+<body>
+    <h1>Hello, <span id="target">World</span>!</h1>
+    <input type="text" id="text-input">
+    <button id="send-btn">전송</button>
+    <script>
+        const spanEl = document.querySelector('#target');
+        let textEl = document.querySelector('#target').innerText;
+        const buttonEl = document.querySelector('#send-btn');
+        buttonEl.addEventListener('click', function() {
+            console.log("안녕");
+            textEl = "스프링 부트";
+            spanEl.innerText = textEl;
+        });
+    </script>
+</body>
+</html>

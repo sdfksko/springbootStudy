@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence/orm
+                 https://jakarta.ee/xml/ns/persistence/orm/orm_3_0.xsd"
+                 version="3.0">
+    <!-- 순수 SQL코드 -->
+    <!-- name -> 쿼리를_수행하는_대상_엔티티.메서드_이름 -->
+    <!-- result-class -> 결과를_매핑할_클래스_전체_패키지_경로 -->
+<!--    <named-native-query-->
+<!--            name="Comment.findByNickname"-->
+<!--            result-class="com.example.firstproject.entity.Comment"-->
+<!--    >-->
+<!--        <query>-->
+<!--            SELECT * FROM comment WHERE nickname = :nickname-->
+<!--        </query>-->
+<!--    </named-native-query>-->
+
+    <named-native-query
+            name="Reply.findByNickname"
+            result-class="com.example.firstproject.models.entity.Reply"
+    >
+        <query>
+            SELECT * FROM reply WHERE nickname = :nickname
+        </query>
+    </named-native-query>
+
+    <!-- 저장 프로시저 -->
+    <named-stored-procedure-query name="a" procedure-name="b">
+
+    </named-stored-procedure-query>
+</entity-mappings>

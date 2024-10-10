@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.secondproject.mybatis.WishMapper">
+    <select id="getWishVOList" resultType="com.example.secondproject.wishlist.WishListVO">
+        SELECT
+            id,
+            title,
+            category,
+            jibun_address AS jibunAddress,
+            road_address AS roadAddress,
+            homepage_link AS homepageLink,
+            image_link AS imageLink,
+            visit_is AS visitIs,
+            visit_count AS visitCount,
+            last_visit_date AS lastVisitDate
+        from wish
+        ORDER BY id DESC
+        LIMIT 3
+
+    </select>
+    <insert id="insertWishVO">
+        INSERT INTO wish (
+            title,
+            category,
+            jibun_address,
+            road_address,
+            homepage_link,
+            image_link,
+            visit_is,
+            visit_count,
+            last_visit_date
+        ) VALUES (#{title},
+                #{category},
+                #{jibunAddress},
+                #{roadAddress},
+                #{homepageLink},
+                #{imageLink},
+                #{visitIs},
+                #{visitCount},
+                #{lastVisitDate}
+        )
+    </insert>
+    <select id="getWishVO" parameterType="Integer" resultType="com.example.secondproject.wishlist.WishListVO">
+        SELECT * FROM wish WHERE id = #{wishId}
+    </select>
+
+    <update id="updateVisitWish" parameterType="Integer">
+        UPDATE wish
+        SET visit_is = 1, visit_count = visit_count + 1, last_visit_date = NOW()
+        WHERE id = #{wishId}
+    </update>
+
+    <delete id="deleteWishVO" parameterType="Integer">
+        DELETE FROM wish WHERE id = #{wishId}
+    </delete>
+
+</mapper>

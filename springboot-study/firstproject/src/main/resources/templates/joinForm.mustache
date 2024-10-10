@@ -1,0 +1,28 @@
+{{>layouts/header}}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h3 class="text-center mb-4">회원가입</h3>
+                    <form action="/join" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Login ID</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your login id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">회원가입</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{>layouts/footer}}
